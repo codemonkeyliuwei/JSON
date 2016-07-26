@@ -45,3 +45,15 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+Debug/cjson.exe
+*.pdb
+json.ncb
+*.sln
+json.suo
+*.htm
+json/Debug/cjson.exe.intermediate.manifest
+*.obj
+json/Debug/mt.dep
+*.idb
+json/json.vcproj
+*.user
