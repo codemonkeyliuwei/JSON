@@ -1,12 +1,18 @@
+//reference:
+//http://noalgo.info/639.html
+//http://my.oschina.net/u/2255341/blog/543508
+//http://blog.csdn.net/azhou_hui/article/details/8333728
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 //#include <stdint.h>
 #include "cJSON.h"  //需要把该头文件放在后面包含  否则会找不到size_t
+
 //解析JSON
 void parse_json(const char *filename)
 {
-    printf("----------------parse json start-------------------------------\n");
+    printf("----------------parse json start------------------\n");
 
     //从文件中读取要解析的JSON数据
     FILE *fp = fopen(filename, "rb");
@@ -48,13 +54,30 @@ void parse_json(const char *filename)
     printf("userpass:%s\n", userpass);
     free(userpass);
     //version: float
-    char *version = cJSON_Print(cJSON_GetObjectItem(data_json, "version"));
-    printf("version:%s\n", version);
-    free(version);
+    //char *version = cJSON_Print(cJSON_GetObjectItem(data_json, "version"));
+    float version = cJSON_GetObjectItem(data_json, "version")->valuedouble;
+    printf("version:%f\n", version);
+    //free(version);
     free(data);
 
-    printf("----------------parse json end--------------------------------\n");
+    //array
+    cJSON* array = cJSON_GetObjectItem(data_json, "array");
+    if (array)
+    {
+        int size = cJSON_GetArraySize(array);
+        printf("array size=%d\n", size);
+        for (int i = 0; i < size; ++i)
+        {
+            cJSON* pItem = cJSON_GetArrayItem(array, i);
+            char* item = pItem->valuestring;
+            printf("item-%d=%s\n", i, item);
+            free(item);
+        }
+    }
+    
+    printf("----------------parse json end-----------------\n");
 }
+
 //创建JSON
 void create_json()
 {

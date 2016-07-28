@@ -1,9 +1,10 @@
 {
-    "name":"PARSE TEST",
+    "name":"PARSE JSON",
     "data":{
         "id":1,
         "username":"ddp",
         "userpass":"123456",
-        "version":"1.0"
+        "version":1.01,
+        "array":["hello", "nihao"]
     }
 }
