@@ -57,3 +57,5 @@ json/Debug/mt.dep
 *.idb
 json/json.vcproj
 *.user
+*.manifest
+json/Release/mt.dep
